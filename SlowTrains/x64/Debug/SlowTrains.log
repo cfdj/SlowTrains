@@ -1,6 +1,6 @@
 ﻿  Source.cpp
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(71,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(72,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(73,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(75,32): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(75,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(76,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(77,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(79,32): warning C4305: 'initializing': truncation from 'double' to 'float'
   SlowTrains.vcxproj -> C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\x64\Debug\SlowTrains.exe

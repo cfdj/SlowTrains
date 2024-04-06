@@ -14,7 +14,7 @@ class AnimatedSprite : public Sprite
 		AnimatedSprite();
 		~AnimatedSprite();
 		void render(int xPos, int yPos);
-
+		bool playing = false;
 private:
 	int currentFrame = 0;
 	int numFrames = 0;

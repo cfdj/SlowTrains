@@ -28,11 +28,13 @@ void AnimatedSprite::render(int xPos, int yPos)
 	rect = { x * width,y * height,width,height };
 	SDL_Rect screenPos = { xPos,yPos,width,height };
 	SDL_RenderCopy(renderer, imageTexture, &rect, &screenPos);
-	if (lastFrameUpdate + frameLength< SDL_GetTicks64()) {
-		lastFrameUpdate = SDL_GetTicks64();
-		currentFrame += 1;
-		if (currentFrame >= numFrames) {
-			currentFrame = 0;
+	if (playing) { //only advance the frames if playing
+		if (lastFrameUpdate + frameLength < SDL_GetTicks64()) {
+			lastFrameUpdate = SDL_GetTicks64();
+			currentFrame += 1;
+			if (currentFrame >= numFrames) {
+				currentFrame = 0;
+			}
 		}
 	}
 }

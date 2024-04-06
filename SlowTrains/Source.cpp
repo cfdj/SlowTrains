@@ -15,6 +15,9 @@ SDL_Window* window = NULL;
 SDL_Surface* screenSurface = NULL;
 SDL_Renderer* globalRenderer = NULL;
 
+enum gameState{Loading,InStation,Running};
+gameState state = Loading;
+
 void End() {
     //Destroy window
     SDL_DestroyWindow(window);
@@ -60,13 +63,14 @@ int main(int argc, char* args[])
     std::string closepath = "Sprites/Close.png";
     std::string railspath = "Sprites/Rails.png";
     std::string foregroundPath = "Sprites/Foreground.png";
-    std::string trainpath = "Sprites/Trains/WestCoaster.png";
+    std::string trainpath = "Sprites/Trains/Swan.png";
     std::string carrigepath = "Sprites/Trains/Carrige.png";
-    int width = 82;
+    int width = 82; //Has to be shared between train sprites, aligned on the left
     int height = 28;
     int pos = 0;
     int posX = 40;
     int posY = 92;
+    int speed = 5;
     float backgroundSpeed = 0;
     float cloudSpeed = 0.2;
     float hillsSpeed = 0.2;
@@ -80,7 +84,7 @@ int main(int argc, char* args[])
     Sprite railsSprite = Sprite(railspath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     Sprite foregroundSprite = Sprite(foregroundPath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     AnimatedSprite trainSprite = AnimatedSprite(trainpath, width, height, 4, 1, globalRenderer);
-    Sprite Carrige = Sprite(carrigepath, 73, 24, 0, 0, globalRenderer);
+    Sprite Carrige = Sprite(carrigepath, 73, 24, 0, 0, globalRenderer); //Should share size with the Trains for consistency
     ParallaxLayer background = ParallaxLayer(backgroundSpeed, &backgroundSprite);
     ParallaxLayer clouds = ParallaxLayer(cloudSpeed, &cloudSprite);
     ParallaxLayer hills = ParallaxLayer(hillsSpeed, &hillSprite);
@@ -90,13 +94,13 @@ int main(int argc, char* args[])
 
     int xMove = -2;
     int yMove = -1;
-    ParticleSystem steam = ParticleSystem("Sprites/steam.png",108,88,xMove,yMove,8,8,5,1,globalRenderer);
+    ParticleSystem steam = ParticleSystem("Sprites/steam.png",78,88,xMove,yMove,8,8,5,1,globalRenderer); //This positioning needs some way to track with the funnel position
     //Main loop flag
     bool quit = false;
 
     //Event handler
     SDL_Event e;
-
+    const Uint8* keyboardState = SDL_GetKeyboardState(NULL);
     //While application is running
     while (!quit)
     {
@@ -107,6 +111,19 @@ int main(int argc, char* args[])
             if (e.type == SDL_QUIT)
             {
                 quit = true;
+            }
+            else if (keyboardState[SDL_SCANCODE_SPACE]) {
+                if(state != Running){
+                    state = Running;
+                    background.SetSpeed(speed);
+                    clouds.SetSpeed(speed);
+                    hills.SetSpeed(speed);
+                    close.SetSpeed(speed);
+                    rails.SetSpeed(speed);
+                    steam.playing = true;
+                    trainSprite.playing = true;
+                    foreground.SetSpeed(speed);
+                }
             }
         }
         //Rendering the frame

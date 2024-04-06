@@ -10,14 +10,18 @@ public:
 	ParallaxLayer();
 	void render();
 	void SetSpeed(int _speed);
+	void change(Sprite* _sprite);
 private:
 	int xpos = 0;
-	float speed = 5; //Shared across all layers
+	float speed = 0; //Shared across all layers
 	float speedFactor = 1; //if speed/speed factor < 1, results in no motion
 	Sprite* leftSprite;
 	Sprite* rightSprite;
+	Sprite* buffer;
 	int frameLength = 16;
 	int lastFrameUpdate = 0;
+	bool changing = false; //used to allow for changing image over the journey
+	bool buffSet = false;
 };
 
 #endif
