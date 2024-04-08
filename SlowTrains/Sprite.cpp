@@ -9,6 +9,10 @@ Sprite::Sprite(std::string _path, int _width, int _height, int _xOffset, int _yO
 	path = _path;
 	rect = { width * xOffset,height * yOffset,width,height };
 	renderer = _renderer;
+	if (renderer == NULL) {
+		printf("Error: Image not Loaded");
+		printf(_path.c_str());
+	}
 	imageSurface = IMG_Load(_path.c_str());
 	if (imageSurface == NULL) {
 		printf("Error: Image not Loaded");
@@ -55,6 +59,9 @@ void Sprite::render(int xPos, int yPos)
 	SDL_Rect screenPos = { xPos,yPos,width,height };
 	SDL_ClearError();
 	int error = SDL_RenderCopy(renderer, imageTexture, &rect, &screenPos);
+	if (error != 0) {
+		printf("%d", error);
+	}
 }
 
 Sprite::Sprite()

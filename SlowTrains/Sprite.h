@@ -17,7 +17,7 @@ public:
 protected:
 	std::string path;
 	int xOffset, yOffset;
-	SDL_Renderer* renderer = NULL;
+	SDL_Renderer* renderer;
 	SDL_Surface* imageSurface = NULL;
 	SDL_Texture* imageTexture = NULL;
 	SDL_Rect rect;

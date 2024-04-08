@@ -1,6 +1,19 @@
-﻿  Source.cpp
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(75,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(76,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(77,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(79,32): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  AnimatedSprite.cpp
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\AnimatedSprite.cpp(33,36): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
+  ParallaxLayer.cpp
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\ParallaxLayer.cpp(28,35): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\ParallaxLayer.cpp(29,17): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\ParallaxLayer.cpp(47,10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  ParticleSystem.cpp
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\ParticleSystem.cpp(28,31): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\ParticleSystem.cpp(49,34): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\ParticleSystem.cpp(52,36): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
+  Source.cpp
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(82,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(83,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(84,27): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(86,32): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Sprite.cpp
+  UI.cpp
+  Generating Code...
   SlowTrains.vcxproj -> C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\x64\Debug\SlowTrains.exe

@@ -6,6 +6,7 @@
 #include "AnimatedSprite.h"
 #include "ParallaxLayer.h"
 #include "ParticleSystem.h"
+#include "UI.h"
 const int SCREEN_WIDTH = 256;
 const int SCREEN_HEIGHT = 128;
 //The window we'll be rendering to
@@ -60,11 +61,17 @@ int main(int argc, char* args[])
     std::string backgroundpath = "Sprites/Background.png";
     std::string cloudspath = "Sprites/Clouds.png";
     std::string hillspath = "Sprites/Hills.png";
+    std::string hillspath2 = "Sprites/Hills2.png";
     std::string closepath = "Sprites/Close.png";
     std::string railspath = "Sprites/Rails.png";
     std::string foregroundPath = "Sprites/Foreground.png";
     std::string trainpath = "Sprites/Trains/Swan.png";
     std::string carrigepath = "Sprites/Trains/Carrige.png";
+
+    //UI paths;
+    std::string speedSlowPath = "Sprites/UI/speedControlSlow.png";
+    std::string speedMediumPath = "Sprites/UI/speedControlMedium.png";
+    std::string speedFullPath = "Sprites/UI/speedControlFast.png";
     int width = 82; //Has to be shared between train sprites, aligned on the left
     int height = 28;
     int pos = 0;
@@ -77,9 +84,11 @@ int main(int argc, char* args[])
     float closeSpeed = 0.4;
     float railsSpeed = 0;
     float foregroundSpeed = 0.4;
+
     Sprite backgroundSprite = Sprite(backgroundpath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     Sprite cloudSprite = Sprite(cloudspath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     Sprite hillSprite = Sprite(hillspath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
+    Sprite hillSprite2 = Sprite(hillspath2, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     Sprite closeSprite = Sprite(closepath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     Sprite railsSprite = Sprite(railspath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     Sprite foregroundSprite = Sprite(foregroundPath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
@@ -94,7 +103,14 @@ int main(int argc, char* args[])
 
     int xMove = -2;
     int yMove = -1;
+
     ParticleSystem steam = ParticleSystem("Sprites/steam.png",78,88,xMove,yMove,8,8,5,1,globalRenderer); //This positioning needs some way to track with the funnel position
+    
+    //UI
+    Sprite speedSlow = Sprite(speedSlowPath, 64, 64, 0, 0, globalRenderer);
+    Sprite speedMedium = Sprite(speedMediumPath, 64, 64, 0, 0, globalRenderer);
+    Sprite speedFull = Sprite(speedFullPath, 64, 64, 0, 0, globalRenderer);
+    UI speedDisplay = UI(&speedSlow, &speedMedium, &speedFull, SCREEN_WIDTH - 64, SCREEN_HEIGHT - 64);
     //Main loop flag
     bool quit = false;
 
@@ -123,6 +139,7 @@ int main(int argc, char* args[])
                     steam.playing = true;
                     trainSprite.playing = true;
                     foreground.SetSpeed(speed);
+                    speedDisplay.setState(1);
                 }
             }
         }
@@ -137,6 +154,7 @@ int main(int argc, char* args[])
         Carrige.render(-19,96);
         trainSprite.render(posX,posY); //The order matters
         foreground.render();
+        speedDisplay.render();
         SDL_RenderPresent(globalRenderer);
     }
     End();
