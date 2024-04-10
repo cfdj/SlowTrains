@@ -22,6 +22,7 @@
     <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="ParallaxLayer.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="SoundPlayer.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="UI.cpp" />
@@ -30,6 +31,7 @@
     <ClInclude Include="AnimatedSprite.h" />
     <ClInclude Include="ParallaxLayer.h" />
     <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="SoundPlayer.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
@@ -93,8 +95,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\cplusplus\SDL2_image-2.8.2\include;C:\cplusplus\SDL2-2.30.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\cplusplus\SDL2_image-2.8.2\lib\x64;C:\cplusplus\SDL2-2.30.2\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\cplusplus\SDL2_mixer-2.8.0\include;C:\cplusplus\SDL2_image-2.8.2\include;C:\cplusplus\SDL2-2.30.2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\cplusplus\SDL2_mixer-2.8.0\lib\x64;C:\cplusplus\SDL2_image-2.8.2\lib\x64;C:\cplusplus\SDL2-2.30.2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -137,7 +139,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

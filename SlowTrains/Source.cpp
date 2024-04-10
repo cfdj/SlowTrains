@@ -7,6 +7,7 @@
 #include "ParallaxLayer.h"
 #include "ParticleSystem.h"
 #include "UI.h"
+#include "SoundPlayer.h"
 const int SCREEN_WIDTH = 256;
 const int SCREEN_HEIGHT = 128;
 //The window we'll be rendering to
@@ -111,6 +112,9 @@ int main(int argc, char* args[])
     Sprite speedMedium = Sprite(speedMediumPath, 64, 64, 0, 0, globalRenderer);
     Sprite speedFull = Sprite(speedFullPath, 64, 64, 0, 0, globalRenderer);
     UI speedDisplay = UI(&speedSlow, &speedMedium, &speedFull, SCREEN_WIDTH - 64, SCREEN_HEIGHT - 64);
+
+    //Sound
+    SoundPlayer soundPlayer = SoundPlayer();
     //Main loop flag
     bool quit = false;
 
@@ -140,6 +144,12 @@ int main(int argc, char* args[])
                     trainSprite.playing = true;
                     foreground.SetSpeed(speed);
                     speedDisplay.setState(1);
+                    soundPlayer.setSpeed(1);
+                    soundPlayer.startMusic();
+                }
+                //For sound testing
+                else if (state == Running) {
+                    soundPlayer.playWhistle();
                 }
             }
         }
