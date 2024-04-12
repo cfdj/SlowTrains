@@ -83,10 +83,19 @@ void SoundPlayer::stopMusic()
     Mix_PauseMusic();
 }
 
+//currently waits for the whistle to finish before it can be played again
+//allowing the player to cut the whistle short would require de-bouncing functionality
 void SoundPlayer::playWhistle()
 {
     if (!mute) {
-        Mix_PlayChannel(-1, whistle, 0);
+        if (whistleChannel != NULL) {
+            if (!Mix_Playing(whistleChannel)) {
+                whistleChannel = Mix_PlayChannel(-1, whistle, 0);
+            }
+        }
+        else { //enabling first time play
+            whistleChannel = Mix_PlayChannel(-1, whistle, 0);
+        }
     }
 }
 

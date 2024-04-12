@@ -27,8 +27,9 @@ private:
 	Mix_Music* fastSpeed = NULL;
 
 	Mix_Chunk* whistle = NULL;
-	int musicVolume = 64; //Maxes at 128
-	int sfxVolume = 74;//Maxes at 128
+	int whistleChannel;
+	int musicVolume = 44; //Maxes at 128
+	int sfxVolume = 54;//Maxes at 128
 	int speed = 0; //Current speed state of the train
 	bool mute = false;
 	std::string slowPath = "Sounds/slowSpeed.wav";

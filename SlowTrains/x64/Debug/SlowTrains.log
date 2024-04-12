@@ -1,8 +1,2 @@
 ﻿  SoundPlayer.cpp
-  Source.cpp
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(83,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(84,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(85,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(87,32): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Generating Code...
   SlowTrains.vcxproj -> C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\x64\Debug\SlowTrains.exe
