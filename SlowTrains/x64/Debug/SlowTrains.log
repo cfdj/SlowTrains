@@ -1,2 +1,5 @@
-﻿  SoundPlayer.cpp
+﻿  Loader.cpp
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Loader.cpp(17,49): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Loader.cpp(18,62): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Loader.cpp(19,55): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   SlowTrains.vcxproj -> C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\x64\Debug\SlowTrains.exe

@@ -8,6 +8,8 @@
 #include "ParticleSystem.h"
 #include "UI.h"
 #include "SoundPlayer.h"
+#include "Loader.h"
+
 const int SCREEN_WIDTH = 256;
 const int SCREEN_HEIGHT = 128;
 //The window we'll be rendering to
@@ -17,6 +19,8 @@ SDL_Window* window = NULL;
 SDL_Surface* screenSurface = NULL;
 SDL_Renderer* globalRenderer = NULL;
 
+//Game loader
+Loader loader = NULL;
 enum gameState{Loading,InStation,Running};
 gameState state = Loading;
 
@@ -52,6 +56,9 @@ void init() {
             printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
         }
         SDL_RenderSetLogicalSize(globalRenderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+        //Load from csvs
+        loader = Loader(globalRenderer);
     }
 
 }
@@ -59,22 +66,21 @@ int main(int argc, char* args[])
 {
     init();
     //Temporay loading sequence for testing
-    std::string backgroundpath = "Sprites/Background.png";
-    std::string cloudspath = "Sprites/Clouds.png";
-    std::string hillspath = "Sprites/Hills.png";
-    std::string hillspath2 = "Sprites/Hills2.png";
-    std::string closepath = "Sprites/Close.png";
-    std::string railspath = "Sprites/Rails.png";
-    std::string foregroundPath = "Sprites/Foreground.png";
-    std::string trainpath = "Sprites/Trains/Swan.png";
+    std::string backgroundpath = "Sprites/Locations/Background.png";
+    std::string cloudspath = "Sprites/Locations/Clouds.png";
+    std::string hillspath = "Sprites/Locations/Hills1.png";
+    std::string hillspath2 = "Sprites/Locations/Island.png";
+    std::string closepath = "Sprites/Locations/Fence.png";
+    std::string railspath = "Sprites/Locations/Rails.png";
+    std::string foregroundPath = "Sprites/Locations/RedRocks.png";
+    //std::string trainpath = "Sprites/Trains/Swan.png";
     std::string carrigepath = "Sprites/Trains/Carrige.png";
 
     //UI paths;
     std::string speedSlowPath = "Sprites/UI/speedControlSlow.png";
     std::string speedMediumPath = "Sprites/UI/speedControlMedium.png";
     std::string speedFullPath = "Sprites/UI/speedControlFast.png";
-    int width = 82; //Has to be shared between train sprites, aligned on the left
-    int height = 28;
+    int trainNum = 1;
     int pos = 0;
     int posX = 40;
     int posY = 92;
@@ -93,7 +99,8 @@ int main(int argc, char* args[])
     Sprite closeSprite = Sprite(closepath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     Sprite railsSprite = Sprite(railspath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     Sprite foregroundSprite = Sprite(foregroundPath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
-    AnimatedSprite trainSprite = AnimatedSprite(trainpath, width, height, 4, 1, globalRenderer);
+//    AnimatedSprite trainSprite = AnimatedSprite(trainpath, width, height, 4, 1, globalRenderer);
+    AnimatedSprite trainSprite = loader.getTrain(trainNum);
     Sprite Carrige = Sprite(carrigepath, 73, 24, 0, 0, globalRenderer); //Should share size with the Trains for consistency
     ParallaxLayer background = ParallaxLayer(backgroundSpeed, &backgroundSprite);
     ParallaxLayer clouds = ParallaxLayer(cloudSpeed, &cloudSprite);
@@ -104,8 +111,10 @@ int main(int argc, char* args[])
 
     int xMove = -2;
     int yMove = -1;
+    int funnelX = loader.getFunnelX(trainNum);
+    int funnelY = loader.getFunnelY(trainNum);
 
-    ParticleSystem steam = ParticleSystem("Sprites/steam.png",78,88,xMove,yMove,8,8,5,1,globalRenderer); //This positioning needs some way to track with the funnel position
+    ParticleSystem steam = ParticleSystem("Sprites/steam.png",funnelX,funnelY,xMove,yMove,8,8,5,1,globalRenderer); //This positioning needs some way to track with the funnel position
     
     //UI
     Sprite speedSlow = Sprite(speedSlowPath, 64, 64, 0, 0, globalRenderer);

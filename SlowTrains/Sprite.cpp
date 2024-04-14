@@ -10,13 +10,15 @@ Sprite::Sprite(std::string _path, int _width, int _height, int _xOffset, int _yO
 	rect = { width * xOffset,height * yOffset,width,height };
 	renderer = _renderer;
 	if (renderer == NULL) {
-		printf("Error: Image not Loaded");
+		printf("Error: Renderer not present not Loaded ");
 		printf(_path.c_str());
+		printf("\n");
 	}
 	imageSurface = IMG_Load(_path.c_str());
 	if (imageSurface == NULL) {
-		printf("Error: Image not Loaded");
+		printf("Error: Image not Loaded ");
 		printf(_path.c_str());
+		printf("\n");
 	}
 	imageTexture = SDL_CreateTextureFromSurface(renderer, imageSurface);
 }
@@ -40,17 +42,20 @@ Sprite::Sprite(const Sprite &_other)
 	rect = _other.rect;
 	renderer = _other.renderer;
 	if (renderer == NULL) {
-		printf("Error: renderer not present");
+		printf("Error: renderer not present in copy ");
+		printf("\n");
 	}
 	imageSurface = IMG_Load(path.c_str());
 	if (imageSurface == NULL) {
-		printf("Error: Image not Loaded");
+		printf("Error: Image not Loaded in copy ");
 		printf(_other.path.c_str());
+		printf("\n");
 	}
 	imageTexture = SDL_CreateTextureFromSurface(renderer, imageSurface);
 	if (imageTexture == NULL) {
-		printf("Error: Texture not made");
+		printf("Error: Texture not made in copy ");
 		printf(_other.path.c_str());
+		printf("\n");
 	}
 }
 
@@ -59,9 +64,11 @@ void Sprite::render(int xPos, int yPos)
 	SDL_Rect screenPos = { xPos,yPos,width,height };
 	SDL_ClearError();
 	int error = SDL_RenderCopy(renderer, imageTexture, &rect, &screenPos);
+	/* For error checking
 	if (error != 0) {
 		printf("%d", error);
 	}
+	*/
 }
 
 Sprite::Sprite()

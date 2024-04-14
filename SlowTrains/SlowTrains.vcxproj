@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnimatedSprite.cpp" />
+    <ClCompile Include="Loader.cpp" />
     <ClCompile Include="ParallaxLayer.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
@@ -29,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedSprite.h" />
+    <ClInclude Include="Loader.h" />
     <ClInclude Include="ParallaxLayer.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="SoundPlayer.h" />
