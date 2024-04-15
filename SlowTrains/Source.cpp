@@ -9,6 +9,7 @@
 #include "UI.h"
 #include "SoundPlayer.h"
 #include "Loader.h"
+#include "GameManager.h"
 
 const int SCREEN_WIDTH = 256;
 const int SCREEN_HEIGHT = 128;
@@ -21,8 +22,7 @@ SDL_Renderer* globalRenderer = NULL;
 
 //Game loader
 Loader loader = NULL;
-enum gameState{Loading,InStation,Running};
-gameState state = Loading;
+
 
 void End() {
     //Destroy window
@@ -80,7 +80,7 @@ int main(int argc, char* args[])
     std::string speedSlowPath = "Sprites/UI/speedControlSlow.png";
     std::string speedMediumPath = "Sprites/UI/speedControlMedium.png";
     std::string speedFullPath = "Sprites/UI/speedControlFast.png";
-    int trainNum = 1;
+    int trainNum = 0;
     int pos = 0;
     int posX = 40;
     int posY = 92;
@@ -111,7 +111,7 @@ int main(int argc, char* args[])
 
     int xMove = -2;
     int yMove = -1;
-    int funnelX = loader.getFunnelX(trainNum);
+    int funnelX = loader.getFunnelX(trainNum); //This probably needs to adjust based not only on train, but also on number of carriges
     int funnelY = loader.getFunnelY(trainNum);
 
     ParticleSystem steam = ParticleSystem("Sprites/steam.png",funnelX,funnelY,xMove,yMove,8,8,5,1,globalRenderer); //This positioning needs some way to track with the funnel position
@@ -127,9 +127,12 @@ int main(int argc, char* args[])
     //Main loop flag
     bool quit = false;
 
+    //GameManager Starting
+    GameManager gameManager = GameManager(&speedDisplay,&background, &soundPlayer);
+
     //Event handler
     SDL_Event e;
-    const Uint8* keyboardState = SDL_GetKeyboardState(NULL);
+
     //While application is running
     while (!quit)
     {
@@ -141,27 +144,13 @@ int main(int argc, char* args[])
             {
                 quit = true;
             }
-            else if (keyboardState[SDL_SCANCODE_SPACE]) {
-                if(state != Running){
-                    state = Running;
-                    background.SetSpeed(speed);
-                    clouds.SetSpeed(speed);
-                    hills.SetSpeed(speed);
-                    close.SetSpeed(speed);
-                    rails.SetSpeed(speed);
-                    steam.playing = true;
-                    trainSprite.playing = true;
-                    foreground.SetSpeed(speed);
-                    speedDisplay.setState(1);
-                    soundPlayer.setSpeed(1);
-                    soundPlayer.startMusic();
-                }
-                //For sound testing
-                else if (state == Running) {
-                    soundPlayer.playWhistle();
-                }
+            else 
+            {
+                gameManager.handleInput(e);
             }
+                
         }
+        
         //Rendering the frame
         SDL_RenderClear(globalRenderer);
         background.render();

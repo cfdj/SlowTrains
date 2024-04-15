@@ -42,6 +42,7 @@ void ParallaxLayer::render()
 	}
 }
 
+float ParallaxLayer::speed = 0;
 void ParallaxLayer::SetSpeed(int _speed)
 {
 	speed = _speed;
