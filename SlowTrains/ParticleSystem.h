@@ -16,8 +16,13 @@ public:
 	ParticleSystem(std::string _path, int _xStart, int _yStart, int _xMove, int _yMove, int _width, int _height, int _xFrames, int _yFrames, SDL_Renderer * _renderer);
 
 	void render();
-	bool playing = false;
+	void setyMove(int y);
+	void setxMove(int x);
+	void setPlaying(bool _playing);
+	void setXStart(int x);
+	void setYStart(int y);
 private:
+	bool playing = false;
 	int numParticles = 10;
 	int xStart,yStart,xMove, yMove, width, height, frameXNum, frameYNum; //This currently duplicates a lot from animated sprite
 	SDL_Rect locations [10] = {};

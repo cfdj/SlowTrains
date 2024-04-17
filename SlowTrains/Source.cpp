@@ -100,7 +100,6 @@ int main(int argc, char* args[])
     Sprite railsSprite = Sprite(railspath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
     Sprite foregroundSprite = Sprite(foregroundPath, SCREEN_WIDTH, SCREEN_HEIGHT, pos, pos, globalRenderer);
 //    AnimatedSprite trainSprite = AnimatedSprite(trainpath, width, height, 4, 1, globalRenderer);
-    AnimatedSprite trainSprite = loader.getTrain(trainNum);
     Sprite Carrige = Sprite(carrigepath, 73, 24, 0, 0, globalRenderer); //Should share size with the Trains for consistency
     ParallaxLayer background = ParallaxLayer(backgroundSpeed, &backgroundSprite);
     ParallaxLayer clouds = ParallaxLayer(cloudSpeed, &cloudSprite);
@@ -128,8 +127,10 @@ int main(int argc, char* args[])
     bool quit = false;
 
     //GameManager Starting
-    GameManager gameManager = GameManager(&speedDisplay,&background, &soundPlayer);
+    GameManager gameManager = GameManager(&speedDisplay,&background, &soundPlayer,&loader,&steam);
 
+    //AnimatedSprite trainSprite = gameManager.getTrain();
+    AnimatedSprite trainSprite = loader.getTrain(1);
     //Event handler
     SDL_Event e;
 
@@ -147,6 +148,7 @@ int main(int argc, char* args[])
             else 
             {
                 gameManager.handleInput(e);
+                //trainSprite = gameManager.getTrain();
             }
                 
         }

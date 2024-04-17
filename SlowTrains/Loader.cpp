@@ -54,6 +54,11 @@ Sprite Loader::getCarrige(int carrigeNum)
 	return carriges[carrigeNum % carriges.size()];
 }
 
+int Loader::getNumTrains()
+{
+	return trains.size();
+}
+
 int Loader::getFunnelX(int trainNum)
 {
 	return funnelXposes[trainNum%funnelXposes.size()];

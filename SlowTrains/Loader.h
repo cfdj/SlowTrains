@@ -20,6 +20,7 @@ public:
 	~Loader();
 	AnimatedSprite getTrain(int trainNum);
 	Sprite getCarrige(int carrigeNum);
+	int getNumTrains();
 	int getFunnelX(int trainNum);
 	int getFunnelY(int trainNum);
 private:

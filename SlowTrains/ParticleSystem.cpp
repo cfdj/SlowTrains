@@ -61,3 +61,28 @@ void ParticleSystem::render()
 		}
 	}
 }
+
+void ParticleSystem::setyMove(int y)
+{
+	yMove = y;
+}
+
+void ParticleSystem::setxMove(int x)
+{
+	xMove = x;
+}
+
+void ParticleSystem::setPlaying(bool _playing)
+{
+	playing = _playing;
+}
+
+void ParticleSystem::setXStart(int x)
+{
+	xStart = x;
+}
+
+void ParticleSystem::setYStart(int y)
+{
+	yStart = y;
+}
