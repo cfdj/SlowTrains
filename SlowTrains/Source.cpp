@@ -125,12 +125,9 @@ int main(int argc, char* args[])
     SoundPlayer soundPlayer = SoundPlayer();
     //Main loop flag
     bool quit = false;
-
     //GameManager Starting
     GameManager gameManager = GameManager(&speedDisplay,&background, &soundPlayer,&loader,&steam);
 
-    //AnimatedSprite trainSprite = gameManager.getTrain();
-    AnimatedSprite trainSprite = loader.getTrain(1);
     //Event handler
     SDL_Event e;
 
@@ -148,23 +145,22 @@ int main(int argc, char* args[])
             else 
             {
                 gameManager.handleInput(e);
-                //trainSprite = gameManager.getTrain();
             }
                 
         }
         
         //Rendering the frame
         SDL_RenderClear(globalRenderer);
-        background.render();
-        clouds.render();
-        hills.render();
-        close.render();
-        rails.render();
+        background.render(globalRenderer);
+        clouds.render(globalRenderer);
+        hills.render(globalRenderer);
+        close.render(globalRenderer);
+        rails.render(globalRenderer);
         steam.render();
-        Carrige.render(-19,96);
-        trainSprite.render(posX,posY); //The order matters
-        foreground.render();
-        speedDisplay.render();
+        Carrige.render(-19,96,globalRenderer);
+        gameManager.render(posX, posY, globalRenderer); //The order matters
+        foreground.render(globalRenderer);
+        speedDisplay.render(globalRenderer);
         SDL_RenderPresent(globalRenderer);
     }
     End();

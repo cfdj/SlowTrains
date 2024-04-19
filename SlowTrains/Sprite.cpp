@@ -20,7 +20,7 @@ Sprite::Sprite(std::string _path, int _width, int _height, int _xOffset, int _yO
 		printf(_path.c_str());
 		printf("\n");
 	}
-	imageTexture = SDL_CreateTextureFromSurface(renderer, imageSurface);
+	imageTexture = SDL_CreateTextureFromSurface(_renderer, imageSurface);
 }
 
 Sprite::~Sprite()
@@ -59,16 +59,24 @@ Sprite::Sprite(const Sprite &_other)
 	}
 }
 
-void Sprite::render(int xPos, int yPos)
+void Sprite::render(int xPos, int yPos,SDL_Renderer* renderer)
 {
 	SDL_Rect screenPos = { xPos,yPos,width,height };
 	SDL_ClearError();
 	int error = SDL_RenderCopy(renderer, imageTexture, &rect, &screenPos);
-	/* For error checking
+
 	if (error != 0) {
-		printf("%d", error);
+		printf(SDL_GetError());
+		//One shot fallback
+		imageSurface = IMG_Load(path.c_str());
+		if (imageSurface == NULL) {
+			printf("Error: Image not Loaded in copy ");
+			printf(path.c_str());
+			printf("\n");
+		}
+		imageTexture = SDL_CreateTextureFromSurface(renderer, imageSurface);
+		SDL_RenderCopy(renderer, imageTexture, &rect, &screenPos);
 	}
-	*/
 }
 
 Sprite::Sprite()
@@ -81,4 +89,14 @@ Sprite::Sprite()
 	renderer = NULL;
 	imageSurface = NULL;
 	imageTexture = NULL;
+}
+
+void Sprite::textureCopy(SDL_Surface* _image)
+{
+	imageTexture = SDL_CreateTextureFromSurface(renderer, _image);
+}
+
+SDL_Surface* Sprite::getSurface()
+{
+	return imageSurface;
 }

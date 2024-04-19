@@ -11,7 +11,7 @@ class UI
 {
 public:
 	UI(Sprite* _state0, Sprite* _state1, Sprite* _state2, int _xPos, int _yPos);
-	void render();
+	void render(SDL_Renderer* renderer);
 	void setState(int newState);
 private:
 	int state = 0;

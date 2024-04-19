@@ -44,9 +44,9 @@ Loader::~Loader()
 	funnelYposes.clear();
 }
 
-AnimatedSprite Loader::getTrain(int trainNum)
+AnimatedSprite* Loader::getTrain(int trainNum)
 {
-	return trains[trainNum%trains.size()];
+	return &trains[trainNum%trains.size()];
 }
 
 Sprite Loader::getCarrige(int carrigeNum)

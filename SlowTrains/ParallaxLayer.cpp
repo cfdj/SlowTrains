@@ -20,10 +20,10 @@ ParallaxLayer::ParallaxLayer()
 	buffer = NULL;
 }
 
-void ParallaxLayer::render()
+void ParallaxLayer::render(SDL_Renderer* renderer)
 {
-	leftSprite->render(xpos, 0);
-	rightSprite->render(xpos + rightSprite->width, 0);
+	leftSprite->render(xpos, 0,renderer);
+	rightSprite->render(xpos + rightSprite->width, 0, renderer);
 	if (lastFrameUpdate + frameLength < SDL_GetTicks64()) {
 		lastFrameUpdate = SDL_GetTicks64();
 		xpos -= speed * speedFactor;//this might need a delay to help speed not be way too small, but we'll see

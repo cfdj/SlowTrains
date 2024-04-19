@@ -18,7 +18,7 @@ class Loader
 public:
 	Loader(SDL_Renderer* renderer);
 	~Loader();
-	AnimatedSprite getTrain(int trainNum);
+	AnimatedSprite* getTrain(int trainNum);
 	Sprite getCarrige(int carrigeNum);
 	int getNumTrains();
 	int getFunnelX(int trainNum);

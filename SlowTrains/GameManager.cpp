@@ -6,7 +6,7 @@ GameManager::GameManager(UI* _ui, ParallaxLayer* _parallax, SoundPlayer* _soundP
     parallax = _parallax;
     soundPlayer = _soundPlayer;
     loader = _loader;
-    train = loader->getTrain(trainId);
+    train = _loader->getTrain(trainId);
     steam = _steam;
 }
 
@@ -28,7 +28,7 @@ void GameManager::handleInput(SDL_Event e)
                 if (keyboardState[start]) {
                     state = Running;
                     steam->setPlaying(true);
-                    train.playing = true;
+                    train->playing = true;
                     updateSpeed();
                     soundPlayer->startMusic();
                 }
@@ -82,9 +82,14 @@ void GameManager::switchTrain()
     steam->setYStart(loader->getFunnelY(trainId));
 }
 
-AnimatedSprite GameManager::getTrain()
+AnimatedSprite* GameManager::getTrain()
 {
     return train;
+}
+
+void GameManager::render(int _xpos, int _ypos,SDL_Renderer* renderer)
+{
+    train->render(_xpos, _ypos, renderer);
 }
 
 void GameManager::updateSpeed()

@@ -8,7 +8,7 @@ class ParallaxLayer
 public:
 	ParallaxLayer(float _speedFactor,Sprite* _sprite);
 	ParallaxLayer();
-	void render();
+	void render(SDL_Renderer* renderer);
 	void SetSpeed(int _speed);
 	void change(Sprite* _sprite);
 private:

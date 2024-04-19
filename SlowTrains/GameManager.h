@@ -9,7 +9,7 @@
 #include "AnimatedSprite.h"
 #include "ParticleSystem.h"
 /// <summary>
-/// The GameManager handles player input and changes between gamestate
+/// The GameManager handles player input and changes between gamestate, also handles rendering the Train
 /// It could be extended further to handle object initialisation
 /// </summary>
 class GameManager
@@ -19,14 +19,15 @@ public:
 	~GameManager();
 	void handleInput(SDL_Event e);
 	void switchTrain();
-	AnimatedSprite getTrain();
+	AnimatedSprite* getTrain();
+	void render(int _xpos, int _ypos,SDL_Renderer* renderer);
 private:
 	void updateSpeed();
 	UI* ui;
 	ParallaxLayer* parallax;
 	SoundPlayer* soundPlayer;
 	Loader* loader;
-	AnimatedSprite train;
+	AnimatedSprite* train;
 	ParticleSystem* steam;
 	//For enabeling Key rebinding
 	SDL_Scancode start = SDL_SCANCODE_SPACE;

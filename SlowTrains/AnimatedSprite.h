@@ -13,7 +13,7 @@ class AnimatedSprite : public Sprite
 		AnimatedSprite(std::string _path, int _width, int _height, int _xFrames, int _yFrames, SDL_Renderer* _renderer);
 		AnimatedSprite();
 		~AnimatedSprite();
-		void render(int xPos, int yPos);
+		void render(int xPos, int yPos,SDL_Renderer* _renderer);
 		bool playing = false;
 private:
 	int currentFrame = 0;
