@@ -22,6 +22,7 @@
     <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Loader.cpp" />
+    <ClCompile Include="Location.cpp" />
     <ClCompile Include="ParallaxLayer.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
@@ -33,6 +34,7 @@
     <ClInclude Include="AnimatedSprite.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Loader.h" />
+    <ClInclude Include="Location.h" />
     <ClInclude Include="ParallaxLayer.h" />
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="SoundPlayer.h" />

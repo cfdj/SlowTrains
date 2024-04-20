@@ -26,8 +26,8 @@ public:
 private:
 	std::vector<AnimatedSprite> trains;
 	std::vector<Sprite> carriges;
-	int width = 82; //Has to be shared between train sprites, aligned on the left
-	int height = 28;
+	int width = 100; //Has to be shared between train sprites, aligned on the left
+	int height = 32;
 	std::vector<int> funnelXposes;
 	std::vector<int> funnelYposes;
 	std::string trainPath = "Sprites/Trains/";
