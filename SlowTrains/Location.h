@@ -6,7 +6,7 @@
 #include "Loader.h"
 #include "ParallaxLayer.h"
 /// <summary>
-/// Locations control which items are displayed in ParallaxLayers and are used in their transitions
+/// Locations control which items are displayed in ParallaxLayers, interacts with hand
 /// They hold an array of Sprites for a location and an Array of if they should be rendered for a location
 /// 
 /// They are created by the loader and the GameManager instructs them when to transition based on distance traveled
@@ -14,12 +14,16 @@
 class Location
 {
 public:
-	Location(Sprite* _sprites[5], bool _enabled[5]);
+	Location(Sprite _sprites[5], bool _enabled[5]);
 	~Location();
-
+    void setFollowingLocation(Location* _follower);
+    Location* getFollowingLocation();
+    Sprite* getSprite(int index);
+    bool getEnabled(int index);
 private:
-    Sprite* sprites[5];
+    Sprite sprites[5];
     bool enabled[5];
+    Location* follower;
     /*
     Sprite backgroundSprite;
     Sprite cloudSprite;

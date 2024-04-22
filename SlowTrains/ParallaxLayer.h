@@ -3,6 +3,11 @@
 #define ParallaxLayer_H
 #include "Sprite.h"
 #include <string>
+/// <summary>
+/// Displays a layer (background,foreground, etc) of a parrallax at a defined speed factor based on the trains current speed
+/// 
+/// A lower bound of 1 is set on movement if speed is greater then 0 to ensure continued motion, which doesn't look amazing as it breaks the parallax effect 
+/// </summary>
 class ParallaxLayer
 {
 public:

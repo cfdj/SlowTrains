@@ -1,6 +1,5 @@
-﻿  Source.cpp
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(89,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(90,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(91,27): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\Source.cpp(93,32): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  ParallaxLayer.cpp
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\ParallaxLayer.cpp(28,35): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\ParallaxLayer.cpp(29,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\SlowTrains\ParallaxLayer.cpp(56,10): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   SlowTrains.vcxproj -> C:\Users\Callum\Documents\GitHub\VisualStudio\SlowTrains\x64\Debug\SlowTrains.exe

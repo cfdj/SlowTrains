@@ -68,11 +68,11 @@ int main(int argc, char* args[])
     //Temporay loading sequence for testing
     std::string backgroundpath = "Sprites/Locations/Background.png";
     std::string cloudspath = "Sprites/Locations/Clouds.png";
-    std::string hillspath = "Sprites/Locations/Tunnel.png";
-    std::string hillspath2 = "Sprites/Locations/Island.png";
+    std::string hillspath2 = "Sprites/Locations/Tunnel.png";
+    std::string hillspath = "Sprites/Locations/Island.png";
     std::string closepath = "Sprites/Locations/Fence.png";
     std::string railspath = "Sprites/Locations/Rails.png";
-    std::string foregroundPath = "Sprites/Locations/DarkStones.png";
+    std::string foregroundPath = "Sprites/Locations/RedRocks.png";
     //std::string trainpath = "Sprites/Trains/Swan.png";
     std::string carrigepath = "Sprites/Trains/Carrige.png";
 
@@ -151,10 +151,10 @@ int main(int argc, char* args[])
         
         //Rendering the frame
         SDL_RenderClear(globalRenderer);
-        //background.render(globalRenderer);
-        //clouds.render(globalRenderer);
+        background.render(globalRenderer);
+        clouds.render(globalRenderer);
         hills.render(globalRenderer);
-        //close.render(globalRenderer);
+        close.render(globalRenderer);
         rails.render(globalRenderer);
         steam.render();
         Carrige.render(-19,96,globalRenderer);

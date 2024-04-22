@@ -26,8 +26,16 @@ void ParallaxLayer::render(SDL_Renderer* renderer)
 	rightSprite->render(xpos + rightSprite->width, 0, renderer);
 	if (lastFrameUpdate + frameLength < SDL_GetTicks64()) {
 		lastFrameUpdate = SDL_GetTicks64();
-		xpos -= speed * speedFactor;//this might need a delay to help speed not be way too small, but we'll see
+		int change = speed * speedFactor;
+//this might need a delay to help speed not be way too small, but we'll see
 									//Current issues: Limited speed range, precision lost with int conversion, certain slow speeds loose continuity of motion
+		//Testing having a fixed minimumspeed
+		//This works okay, but doesn't look great
+			/*if (speed > 0 && change == 0) {
+				change = 1;
+			}
+			*/
+			xpos -= change;
 		if (xpos < -rightSprite->width) {
 			xpos = 0;
 			if (changing && ! buffSet) {

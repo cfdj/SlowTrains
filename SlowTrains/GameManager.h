@@ -38,7 +38,7 @@ private:
 	SDL_Scancode previousTrain = SDL_SCANCODE_S;
 	enum gameState { Loading, InStation, Running };
 	gameState state = InStation;
-	int speeds[3] = { 2,5,10 };
+	int speeds[3] = { 4,6,10 };
 	int particleSpeeds[3] = { -1, -2 , -4 };
 	int currentSpeed = 1;
 
